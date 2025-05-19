@@ -4,12 +4,12 @@ import Button from '../ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 interface SidebarProps {
-	currentPage: 'home0' | 'home' | 'devices' | 'analysis' | 'history' | 'settings' | 'login' | 'smart' | 'yijie' | 'garbage1' | 'garbage2' | 'garbage3';
-	setCurrentPage: React.Dispatch<React.SetStateAction<'home0' | 'home' | 'devices' | 'analysis' | 'history' | 'settings' | 'login' | 'smart' | 'yijie' | 'garbage1' | 'garbage2' | 'garbage3'>>;
+	currentPage: 'home0' | 'home' | 'devices' | 'analysis' | 'history' | 'settings' | 'login' | 'smart' | 'yijie' | 'garbage1' | 'garbage2' | 'garbage3' | 'homeyellow';
+	setCurrentPage: React.Dispatch<React.SetStateAction<'home0' | 'home' | 'devices' | 'analysis' | 'history' | 'settings' | 'login' | 'smart' | 'yijie' | 'garbage1' | 'garbage2' | 'garbage3' | 'homeyellow'>>;
 }
 
 const SidebarYellow: React.FC<SidebarProps> = ({ currentPage, setCurrentPage }) => {
-	const handlePageChange = (page: 'home0' | 'home' | 'devices' | 'analysis' | 'history' | 'settings' | 'login' | 'smart') => {
+	const handlePageChange = (page: 'home0' | 'home' | 'devices' | 'analysis' | 'history' | 'settings' | 'login' | 'smart' | 'homeyellow') => {
 		// 只有在页面已实现时才切换页面
 		if (['home', 'devices', 'analysis'].includes(page)) {
 			setCurrentPage(page);
@@ -20,12 +20,12 @@ const SidebarYellow: React.FC<SidebarProps> = ({ currentPage, setCurrentPage }) 
 		<aside className="w-72 bg-[#f8ebd5] p-6">
 			<div className="flex flex-col items-center mb-8">
 				<Avatar className="w-20 h-20 mb-2">
-					<AvatarImage src="/images/MrsLin_35_north.jpg" />
+					<AvatarImage src="/images/MissLi_20_south_dog.jpg" />
 					<AvatarFallback>用户</AvatarFallback>
 				</Avatar>
 				<div className="text-center">
-					<h3 className="font-medium">林女士</h3>
-					<p className="text-sm text-gray-600">北京市朝阳区机场北路3号</p>
+					<h3 className="font-medium">李小姐</h3>
+					<p className="text-sm text-gray-600">福建省福州市鼓楼区杨桥中路 148 号</p>
 				</div>
 			</div>
 			<nav className="space-y-6">

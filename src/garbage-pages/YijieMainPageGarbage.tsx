@@ -9,12 +9,12 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 
 // 修改 setCurrentPage 的参数类型，添加 'garbage1' 和 'garbage2'
 interface YijieMainPageProps {
-    setCurrentPage: (page: 'home' | 'yijie' | 'garbage1' | 'garbage2' | 'garbage3' | 'analysis') => void;
+    setCurrentPage: (page: 'home' | 'yijie' | 'garbage1' | 'garbage2' | 'garbage3' | 'analysis' | 'homeyellow') => void;
 }
 
 interface Message {
-	text: string;
-	isUser: boolean;
+    text: string;
+    isUser: boolean;
 }
 
 const YijieMainPageGarbage: React.FC<YijieMainPageProps> = ({ setCurrentPage }) => {
@@ -44,7 +44,8 @@ const YijieMainPageGarbage: React.FC<YijieMainPageProps> = ({ setCurrentPage }) 
         "好的。正在为您生成智能家居界面。",
         "好的！我将为您在主页轮播家中智能摄像头的实时画面，并对整个房间的耗电量进行实时监控，实现对家庭设备的实时检测与控制。",
         "好的，我将为您生成设备界面，可以对所有的设备进行便捷操作。",
-        "好的，我将结合大数据，为您生成智能分析界面，同时，您还可以在主页右上方点击输入指令，我会对您的要求进行智能回答。"
+        "好的，我将结合大数据，为您生成智能分析界面，同时，您还可以在主页右上方点击输入指令，我会对您的要求进行智能回答。",
+        "好的，这是更换完颜色的界面"
     ];
 
     useEffect(() => {
@@ -138,6 +139,12 @@ const YijieMainPageGarbage: React.FC<YijieMainPageProps> = ({ setCurrentPage }) 
     const handleJumpToMyHomePage = () => {
         setTimeout(() => {
             setCurrentPage('analysis'); // 0.5秒后跳转到 好的
+        }, 500);
+    };
+
+    const handleJumpToMyHomePageYellow = () => {
+        setTimeout(() => {
+            setCurrentPage('homeyellow'); // 0.5秒后跳转到 好的
         }, 500);
     };
 
@@ -346,6 +353,15 @@ const YijieMainPageGarbage: React.FC<YijieMainPageProps> = ({ setCurrentPage }) 
                                                             跳转到 智能分析界面
                                                         </Button>
                                                     )}
+                                                    {/* 判断是否为第七次 AI 回复并显示跳转按钮 */}
+                                                    {!msg.isUser && responseIndex === 7 && index === messages.length - 1 && (
+                                                        <Button
+                                                            onClick={handleJumpToMyHomePageYellow}
+                                                            className="mt-0 ml-3 text-sm px-2 py-1"
+                                                        >
+                                                            跳转到 黄色智能家居界面
+                                                        </Button>
+                                                    )}
                                                 </div>
                                                 {msg.isUser && (
                                                     <Avatar className="w-10 h-10">
@@ -412,7 +428,7 @@ const YijieMainPageGarbage: React.FC<YijieMainPageProps> = ({ setCurrentPage }) 
                                                         {style}
                                                     </Button>
                                                 ))}
-                                            </div>    
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -429,15 +445,15 @@ const YijieMainPageGarbage: React.FC<YijieMainPageProps> = ({ setCurrentPage }) 
                     </div>
                 )}
                 {showDownloadSuccessModal && (
-    <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 bg-white p-8 rounded-lg shadow-md border-2 border-blue-700">
-        <p className="text-center text-xl mb-4">代码成功导出到本地！</p>
-        <div className="flex justify-center">
-            <button className="bg-blue-700 hover:bg-blue-800 text-white rounded-lg px-4 py-2" onClick={handleCloseDownloadSuccessModal}>
-                关闭
-            </button>
-        </div>
-    </div>
-)}
+                    <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 bg-white p-8 rounded-lg shadow-md border-2 border-blue-700">
+                        <p className="text-center text-xl mb-4">代码成功导出到本地！</p>
+                        <div className="flex justify-center">
+                            <button className="bg-blue-700 hover:bg-blue-800 text-white rounded-lg px-4 py-2" onClick={handleCloseDownloadSuccessModal}>
+                                关闭
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

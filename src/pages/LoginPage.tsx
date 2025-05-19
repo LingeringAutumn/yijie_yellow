@@ -5,7 +5,7 @@ import Checkbox from "@/components/ui/checkbox";
 import { PageType } from '../types';
 import { Dispatch, SetStateAction } from "react";
 interface LoginPageProps {
-	setCurrentPage: Dispatch<SetStateAction<'home0' | 'home' | 'analysis' | 'history' | 'devices' | 'yijie' | 'login' | 'garbage1' | 'garbage2' | 'garbage3' | 'settings' | 'smart'>>;
+	setCurrentPage: Dispatch<SetStateAction<'home0' | 'home' | 'analysis' | 'history' | 'devices' | 'yijie' | 'login' | 'garbage1' | 'garbage2' | 'garbage3' | 'settings' | 'smart' | 'homeyellow'>>;
 }
 const LoginPage: React.FC<LoginPageProps> = ({ setCurrentPage }) => {
 	const backgroundImage = 'https://ai-public.mastergo.com/ai/img_res/aa11ce87faf94db7f32b14695b14b604.jpg';

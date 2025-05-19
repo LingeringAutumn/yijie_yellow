@@ -2,11 +2,11 @@ import React from 'react';
 import Button from '../ui/button';
 
 interface HeaderProps {
-	currentPage: 'home0' | 'home' | 'devices' | 'analysis' | 'history' | 'settings' | 'login' | 'smart' | 'yijie' | 'garbage1' | 'garbage2' | 'garbage3';
-	setCurrentPage: React.Dispatch<React.SetStateAction<'home0' | 'home' | 'devices' | 'analysis' | 'history' | 'settings' | 'login' | 'smart' | 'yijie' | 'garbage1' | 'garbage2' | 'garbage3'>>;
+	currentPage: 'home0' | 'home' | 'devices' | 'analysis' | 'history' | 'settings' | 'login' | 'smart' | 'yijie' | 'garbage1' | 'garbage2' | 'garbage3' | 'homeyellow';
+	setCurrentPage: React.Dispatch<React.SetStateAction<'home0' | 'home' | 'devices' | 'analysis' | 'history' | 'settings' | 'login' | 'smart' | 'yijie' | 'garbage1' | 'garbage2' | 'garbage3' | 'homeyellow'>>;
 }
 
-const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
+const HeaderYellow: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
 	return (
 		<header className="flex flex-col items-center justify-between p-4 border-b border-[#c4b7a6]">
 			{/* 第一行：导航按钮 */}
@@ -74,4 +74,4 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
 	);
 };
 
-export default Header;
+export default HeaderYellow;

@@ -12,6 +12,9 @@ import GarbageInterface1 from './garbage-pages/GarbageInterface1';
 import GarbageInterface2 from './garbage-pages/GarbageInterface2';
 import GarbageInterface3 from './garbage-pages/GarbageInterface3';
 import { PageType } from './types';
+import MyHomePageYellow from './garbage-pages/MyHomePageYellow';
+import SidebarYellow from './components/shared/SidebarYellow';
+import HeaderYellow from './components/shared/HeaderYellow';
 
 const AppGarbage: React.FC = () => {
     const [currentPage, setCurrentPage] = useState<PageType>('yijie');
@@ -22,12 +25,18 @@ const AppGarbage: React.FC = () => {
         if (currentPage === 'home0' || currentPage === 'garbage3') {
             return <GarbageHeader1 currentPage={currentPage} setCurrentPage={setCurrentPage} />;
         }
+        if (currentPage === 'homeyellow') {
+            return <HeaderYellow currentPage={currentPage} setCurrentPage={setCurrentPage} />;
+        }
         return shouldShowSidebarAndHeader && <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />;
     };
 
     const getSidebarComponent = () => {
         if (currentPage === 'home0' || currentPage === 'garbage3') {
             return <GarbageSidebar2 currentPage={currentPage} setCurrentPage={setCurrentPage} />;
+        }
+        if (currentPage === 'homeyellow') {
+            return <SidebarYellow currentPage={currentPage} setCurrentPage={setCurrentPage} />;
         }
         return shouldShowSidebarAndHeader && <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage} />;
     };
@@ -48,6 +57,7 @@ const AppGarbage: React.FC = () => {
                         {currentPage === 'garbage1' && <GarbageInterface1 setCurrentPage={setCurrentPage} />}
                         {currentPage === 'garbage2' && <GarbageInterface2 setCurrentPage={setCurrentPage} />}
                         {currentPage === 'garbage3' && <GarbageInterface3 setCurrentPage={setCurrentPage} />}
+                        {currentPage === 'homeyellow' && <MyHomePageYellow />}
                     </main>
                 </div>
             </div>

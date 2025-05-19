@@ -4,12 +4,12 @@ import Button from '../../components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 interface SidebarProps {
-	currentPage: 'home0' | 'home' | 'analysis' | 'devices' | 'history' | 'yijie' | 'login' | 'garbage1' | 'garbage2' | 'garbage3' | 'smart' | 'settings';
-	setCurrentPage: React.Dispatch<React.SetStateAction<'home0' | 'home' | 'history' | 'analysis' | 'devices' | 'yijie' | 'login' | 'garbage1' | 'garbage2' | 'garbage3' | 'smart' | 'settings'>>;
+	currentPage: 'home0' | 'home' | 'analysis' | 'devices' | 'history' | 'yijie' | 'login' | 'garbage1' | 'garbage2' | 'garbage3' | 'smart' | 'settings' | 'homeyellow';
+	setCurrentPage: React.Dispatch<React.SetStateAction<'home0' | 'home' | 'history' | 'analysis' | 'devices' | 'yijie' | 'login' | 'garbage1' | 'garbage2' | 'garbage3' | 'smart' | 'settings' | 'homeyellow'>>;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ currentPage, setCurrentPage }) => {
-	const handlePageChange = (page: 'home0' | 'home' | 'analysis' | 'devices' | 'yijie' | 'login' | 'garbage1' | 'garbage2' | 'garbage3') => {
+	const handlePageChange = (page: 'home0' | 'home' | 'analysis' | 'devices' | 'yijie' | 'login' | 'garbage1' | 'garbage2' | 'garbage3' | 'homeyellow') => {
 		// 只有在页面已实现时才切换页面
 		if (['home0', 'garbage3'].includes(page)) {
 			setCurrentPage(page);
