@@ -10,13 +10,10 @@ import { faTv, faBox, faLightbulb, faWifi, faThermometerHalf } from "@fortawesom
 
 import Header from "../components/shared/Header";
 import Sidebar from "../components/shared/Sidebar";
-import SidebarYellow from "../components/shared/SidebarYellow";
 import PieChart from "../components/charts/PieChart";
 import BarChart from "../components/charts/BarChart";
-import BarChartYellow from "../components/charts/BarChartYellow";
 import { ChatModal, DeviceContext } from "../components/modals/ChatModal";
 import DeviceControl from "../components/device-controls/DeviceControl";
-import DeviceControlYellow from "../components/device-controls/DeviceControlYellow";
 import TVModal from "../components/modals/TVModal";
 import FridgeModal from "../components/modals/FridgeModal";
 import LightModal from "../components/modals/LightModal";
@@ -97,7 +94,7 @@ const MyHomePageContent: React.FC = () => {
 			[deviceName]: newValue !== undefined ? newValue : !devices[deviceName]
 		};
 		setDevices(updatedDevices);
-
+		
 		if (isMounted) {
 			try {
 				localStorage.setItem("devicesStatus", JSON.stringify(updatedDevices));
@@ -142,18 +139,18 @@ const MyHomePageContent: React.FC = () => {
 			isDialPanelModalOpen,
 			setIsDialPanelModalOpen,
 		}}>
-			<div className="min-h-screen bg-[#D4E7EE] text-gray-800">
+			<div className="min-h-screen bg-[#f0f5f0] text-gray-800">
 				<main className="flex-1 p-6">
 					<div className="flex justify-between items-center mb-6">
 						<h1 className="text-2xl font-bold">我的家</h1>
 						<div className="relative">
 							<button
 								onClick={() => setIsChatModalOpen(true)}
-								className="pl-12 pr-12 py-3 rounded-lg bg-[#D4E7EE] text-base border-2 border-[#C4A576] text-[#C4A576] hover:bg-[#F8EBD5] w-72"
+								className="pl-12 pr-12 py-3 rounded-lg bg-[#F0F5F0] text-base border-2 border-[#3A7233] text-[#3A7233] hover:bg-[#E0EBE0] w-72"
 							>
-								<i className="fas fa-keyboard absolute left-4 top-1/2 -translate-y-1/2 text-[#C4A576] text-lg"></i>
+								<i className="fas fa-keyboard absolute left-4 top-1/2 -translate-y-1/2 text-[#3A7233] text-lg"></i>
 								<span>输入指令或点击语音</span>
-								<i className="fas fa-microphone absolute right-4 top-1/2 -translate-y-1/2 text-[#C4A576] text-lg"></i>
+								<i className="fas fa-microphone absolute right-4 top-1/2 -translate-y-1/2 text-[#3A7233] text-lg"></i>
 							</button>
 							<ChatModal isOpen={isChatModalOpen} onClose={() => setIsChatModalOpen(false)} />
 							<div
@@ -163,7 +160,7 @@ const MyHomePageContent: React.FC = () => {
 						</div>
 					</div>
 					<div className="grid grid-cols-3 gap-6 max-w-full">
-						<div className="col-span-2 bg-[#EED8A6] rounded-lg overflow-hidden">
+						<div className="col-span-2 bg-[#c2dbc2] rounded-lg overflow-hidden">
 							<div className="p-4 border-b border-gray-700 flex justify-between items-center">
 								<span>摄像头</span>
 								<div className="flex space-x-2">
@@ -227,7 +224,7 @@ const MyHomePageContent: React.FC = () => {
 							</Swiper>
 						</div>
 						<div className="space-y-6">
-							<div className="bg-[#EED8A6] p-4 rounded-lg">
+							<div className="bg-[#c2dbc2] p-4 rounded-lg">
 								<div className="flex justify-between items-center mb-4">
 									<span>房间耗电量</span>
 									<i className="fas fa-ellipsis-v text-gray-400"></i>
@@ -235,44 +232,44 @@ const MyHomePageContent: React.FC = () => {
 								<div className="relative">
 									<PieChart data={pieChartData} />
 									<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-										<div className="text-3xl font-bold text-[#1f2837]">304.5</div>
-										<div className="text-sm text-[#C4A576]">总耗电量</div>
+										<div className="text-3xl font-bold text-[#2d5a27]">304.5</div>
+										<div className="text-sm text-[#3a7233]">总耗电量</div>
 									</div>
 								</div>
 							</div>
-							<div className="bg-[#EED8A6] p-4 rounded-lg">
+							<div className="bg-[#c2dbc2] p-4 rounded-lg">
 								<div className="flex justify-between items-center mb-4">
 									<span>按日统计</span>
 									<i className="fas fa-ellipsis-v text-gray-400"></i>
 								</div>
-								<BarChartYellow xData={barChartXData} yData={barChartYData} />
+								<BarChart xData={barChartXData} yData={barChartYData} />
 							</div>
 						</div>
 					</div>
 					<div className="grid grid-cols-5 mt-6">
-						<div className="bg-[#EED8A6] p-4 rounded-l-lg">
+						<div className="bg-[#c2dbc2] p-4 rounded-l-lg">
 							<div className="text-base text-gray-700">电力</div>
 							<div className="text-4xl font-bold mt-2">745<span className="text-sm text-gray-700 ml-2">度</span></div>
 						</div>
-						<div className="bg-[#EED8A6] p-4">
+						<div className="bg-[#c2dbc2] p-4">
 							<div className="text-base text-gray-700">湿度</div>
 							<div className="text-4xl font-bold mt-2">20.0<span className="text-sm text-gray-700 ml-2">相对值</span></div>
 						</div>
-						<div className="bg-[#EED8A6] p-4">
+						<div className="bg-[#c2dbc2] p-4">
 							<div className="text-base text-gray-700">室内</div>
 							<div className="text-4xl font-bold mt-2">15.3<span className="text-sm text-gray-700 ml-2">温度值</span></div>
 						</div>
-						<div className="bg-[#EED8A6] p-4">
+						<div className="bg-[#c2dbc2] p-4">
 							<div className="text-base text-gray-700">水量</div>
 							<div className="text-4xl font-bold mt-2">494<span className="text-sm text-gray-700 ml-2">立方米</span></div>
 						</div>
-						<div className="bg-[#EED8A6] p-4 rounded-r-lg">
+						<div className="bg-[#c2dbc2] p-4 rounded-r-lg">
 							<div className="text-base text-gray-700">网络</div>
 							<div className="text-4xl font-bold mt-2">45.3<span className="text-sm text-gray-700 ml-2">MBPS</span></div>
 						</div>
 					</div>
 					<div className="grid grid-cols-5 gap-2 mt-6">
-						<DeviceControlYellow
+						<DeviceControl
 							icon={faTv}
 							name="电视"
 							isChecked={devices.TV}
@@ -280,7 +277,7 @@ const MyHomePageContent: React.FC = () => {
 							onClick={() => setIsTVModalOpen(true)}
 							isDragging={false}
 						/>
-						<DeviceControlYellow
+						<DeviceControl
 							icon={faBox}
 							name="冰箱"
 							isChecked={devices.Fridge}
@@ -288,7 +285,7 @@ const MyHomePageContent: React.FC = () => {
 							onClick={() => setIsFridgeModalOpen(true)}
 							isDragging={false}
 						/>
-						<DeviceControlYellow
+						<DeviceControl
 							icon={faLightbulb}
 							name="灯光"
 							isChecked={devices.Light}
@@ -296,7 +293,7 @@ const MyHomePageContent: React.FC = () => {
 							onClick={() => setIsLightModalOpen(true)}
 							isDragging={false}
 						/>
-						<DeviceControlYellow
+						<DeviceControl
 							icon={faWifi}
 							name="Wifi"
 							isChecked={devices.Wifi}
@@ -304,7 +301,7 @@ const MyHomePageContent: React.FC = () => {
 							onClick={() => null}
 							isDragging={false}
 						/>
-						<DeviceControlYellow
+						<DeviceControl
 							icon={faThermometerHalf}
 							name="恒温器"
 							isChecked={devices.Thermostat}

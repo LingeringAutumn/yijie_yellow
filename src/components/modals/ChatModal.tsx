@@ -28,7 +28,10 @@ const DeviceContext = React.createContext({
 	isRiceCookerModalOpen: false,
 	setIsRiceCookerModalOpen: (value: boolean) => { },
 	isWaterHeaterModalOpen: false,
-	setIsWaterHeaterModalOpen: (value: boolean) => { }
+	setIsWaterHeaterModalOpen: (value: boolean) => { },
+
+	isDialPanelModalOpen: false,
+	setIsDialPanelModalOpen: (value: boolean) => { },
 });
 
 interface ChatModalProps {
@@ -56,7 +59,9 @@ const ChatModal: React.FC<ChatModalProps> = ({ isOpen, onClose }) => {
 		setIsHeatingModalOpen,
 		setIsFanModalOpen,
 		setIsRiceCookerModalOpen,
-		setIsWaterHeaterModalOpen
+		setIsWaterHeaterModalOpen,
+
+		setIsDialPanelModalOpen, // 从上下文中获取拨号面板的 set 函数
 	} = useContext(DeviceContext);
 
 	const handleSend = () => {
@@ -65,44 +70,49 @@ const ChatModal: React.FC<ChatModalProps> = ({ isOpen, onClose }) => {
 		setInputValue(''); // 清空输入框
 		// 添加自动回复
 		setTimeout(() => {
-			setMessages(prev => [...prev, { text: "好的，请稍候", isUser: false }]);
-			// 根据用户输入打开对应的 Modal
-			switch (inputValue) {
-				case "电视":
-					setIsTVModalOpen(true);
-					break;
-				case "冰箱":
-					setIsFridgeModalOpen(true);
-					break;
-				case "灯光":
-					setIsLightModalOpen(true);
-					break;
-				case "恒温器":
-					setIsThermostatModalOpen(true);
-					break;
-				case "智能音响":
-					setIsSpeakerModalOpen(true);
-					break;
-				case "智能门锁":
-					setIsSmartLockModalOpen(true);
-					break;
-				case "窗帘":
-					setIsCurtainModalOpen(true);
-					break;
-				case "地暖":
-					setIsHeatingModalOpen(true);
-					break;
-				case "电风扇":
-					setIsFanModalOpen(true);
-					break;
-				case "电饭煲":
-					setIsRiceCookerModalOpen(true);
-					break;
-				case "热水器":
-					setIsWaterHeaterModalOpen(true);
-					break;
-				default:
-					console.log(`未找到对应的设备：${inputValue}`);
+			if (inputValue.includes('坏了')) {
+				setMessages(prev => [...prev, { text: "好的。给您提供家电维修李师傅的电话，您可以电话预约上门维修。", isUser: false }]);
+				+     setIsDialPanelModalOpen(true); // 通过上下文函数打开面板
+			} else {
+				setMessages(prev => [...prev, { text: "好的，请稍候", isUser: false }]);
+				// 根据用户输入打开对应的 Modal
+				switch (inputValue) {
+					case "电视":
+						setIsTVModalOpen(true);
+						break;
+					case "冰箱":
+						setIsFridgeModalOpen(true);
+						break;
+					case "灯光":
+						setIsLightModalOpen(true);
+						break;
+					case "恒温器":
+						setIsThermostatModalOpen(true);
+						break;
+					case "智能音响":
+						setIsSpeakerModalOpen(true);
+						break;
+					case "智能门锁":
+						setIsSmartLockModalOpen(true);
+						break;
+					case "窗帘":
+						setIsCurtainModalOpen(true);
+						break;
+					case "地暖":
+						setIsHeatingModalOpen(true);
+						break;
+					case "电风扇":
+						setIsFanModalOpen(true);
+						break;
+					case "电饭煲":
+						setIsRiceCookerModalOpen(true);
+						break;
+					case "热水器":
+						setIsWaterHeaterModalOpen(true);
+						break;
+					default:
+						console.log(`未找到对应的设备：${inputValue}`);
+				}
 			}
 		}, 700);
 	};

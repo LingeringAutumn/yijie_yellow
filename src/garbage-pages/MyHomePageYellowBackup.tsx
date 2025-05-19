@@ -10,13 +10,10 @@ import { faTv, faBox, faLightbulb, faWifi, faThermometerHalf } from "@fortawesom
 
 import Header from "../components/shared/Header";
 import Sidebar from "../components/shared/Sidebar";
-import SidebarYellow from "../components/shared/SidebarYellow";
 import PieChart from "../components/charts/PieChart";
 import BarChart from "../components/charts/BarChart";
-import BarChartYellow from "../components/charts/BarChartYellow";
 import { ChatModal, DeviceContext } from "../components/modals/ChatModal";
 import DeviceControl from "../components/device-controls/DeviceControl";
-import DeviceControlYellow from "../components/device-controls/DeviceControlYellow";
 import TVModal from "../components/modals/TVModal";
 import FridgeModal from "../components/modals/FridgeModal";
 import LightModal from "../components/modals/LightModal";
@@ -235,7 +232,7 @@ const MyHomePageContent: React.FC = () => {
 								<div className="relative">
 									<PieChart data={pieChartData} />
 									<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-										<div className="text-3xl font-bold text-[#1f2837]">304.5</div>
+										<div className="text-3xl font-bold text-[#2d5a27]">304.5</div>
 										<div className="text-sm text-[#C4A576]">总耗电量</div>
 									</div>
 								</div>
@@ -245,7 +242,7 @@ const MyHomePageContent: React.FC = () => {
 									<span>按日统计</span>
 									<i className="fas fa-ellipsis-v text-gray-400"></i>
 								</div>
-								<BarChartYellow xData={barChartXData} yData={barChartYData} />
+								<BarChart xData={barChartXData} yData={barChartYData} />
 							</div>
 						</div>
 					</div>
@@ -272,7 +269,7 @@ const MyHomePageContent: React.FC = () => {
 						</div>
 					</div>
 					<div className="grid grid-cols-5 gap-2 mt-6">
-						<DeviceControlYellow
+						<DeviceControl
 							icon={faTv}
 							name="电视"
 							isChecked={devices.TV}
@@ -280,7 +277,7 @@ const MyHomePageContent: React.FC = () => {
 							onClick={() => setIsTVModalOpen(true)}
 							isDragging={false}
 						/>
-						<DeviceControlYellow
+						<DeviceControl
 							icon={faBox}
 							name="冰箱"
 							isChecked={devices.Fridge}
@@ -288,7 +285,7 @@ const MyHomePageContent: React.FC = () => {
 							onClick={() => setIsFridgeModalOpen(true)}
 							isDragging={false}
 						/>
-						<DeviceControlYellow
+						<DeviceControl
 							icon={faLightbulb}
 							name="灯光"
 							isChecked={devices.Light}
@@ -296,7 +293,7 @@ const MyHomePageContent: React.FC = () => {
 							onClick={() => setIsLightModalOpen(true)}
 							isDragging={false}
 						/>
-						<DeviceControlYellow
+						<DeviceControl
 							icon={faWifi}
 							name="Wifi"
 							isChecked={devices.Wifi}
@@ -304,7 +301,7 @@ const MyHomePageContent: React.FC = () => {
 							onClick={() => null}
 							isDragging={false}
 						/>
-						<DeviceControlYellow
+						<DeviceControl
 							icon={faThermometerHalf}
 							name="恒温器"
 							isChecked={devices.Thermostat}
